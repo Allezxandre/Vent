@@ -3,7 +3,7 @@
 //  Vent
 //
 //  Created by dodo-mac on 22/05/2015.
-//  Copyright (c) 2015 dodo-mac. All rights reserved.
+//  Copyright (c) 2015 Dorian Rouby. All rights reserved.
 //
 
 import UIKit
