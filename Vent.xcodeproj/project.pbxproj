@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2859BC6D1B0F61D500019FEA /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859BC6C1B0F61D500019FEA /* Weather.swift */; };
 		2859BC6F1B0F63B300019FEA /* weatherItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859BC6E1B0F63B300019FEA /* weatherItems.swift */; };
+		287AC4AB1B0FAE5F00294A35 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 287AC4AA1B0FAE5F00294A35 /* Podfile */; };
 		300E34081B0F4D8600575FA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E34071B0F4D8600575FA0 /* AppDelegate.swift */; };
 		300E340A1B0F4D8600575FA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E34091B0F4D8600575FA0 /* ViewController.swift */; };
 		300E340D1B0F4D8600575FA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 300E340B1B0F4D8600575FA0 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		2859BC6C1B0F61D500019FEA /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2859BC6E1B0F63B300019FEA /* weatherItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weatherItems.swift; sourceTree = "<group>"; };
+		287AC4AA1B0FAE5F00294A35 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		2C4BA2256BC8B8965A245955 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		300E34021B0F4D8600575FA0 /* Vent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		300E34061B0F4D8600575FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		300E33F91B0F4D8600575FA0 = {
 			isa = PBXGroup;
 			children = (
+				287AC4AA1B0FAE5F00294A35 /* Podfile */,
 				300E34041B0F4D8600575FA0 /* Vent */,
 				300E341A1B0F4D8700575FA0 /* VentTests */,
 				300E34031B0F4D8600575FA0 /* Products */,
@@ -227,6 +230,7 @@
 			files = (
 				300E340D1B0F4D8600575FA0 /* Main.storyboard in Resources */,
 				300E34121B0F4D8600575FA0 /* LaunchScreen.xib in Resources */,
+				287AC4AB1B0FAE5F00294A35 /* Podfile in Resources */,
 				300E340F1B0F4D8600575FA0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
