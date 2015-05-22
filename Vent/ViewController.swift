@@ -18,13 +18,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Get position
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
         // Do any additional setup after loading the view, typically from a nib.
         // Start weather fetch
         Weather.retrieveWeather(48, longitude: 4) { (resultat) -> Void in
             self.takeWeather(resultat)
         }
+        
+        
         // Start compass
-        locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.headingFilter = 1
         locationManager.delegate = self
@@ -44,6 +51,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         println("Salut")
         self.compassView.transform = CGAffineTransformMakeRotation(newRad)
     })
+    }
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        données?.longitude = Float(newLocation.coordinate.longitude);
+        données?.latitude = Float(newLocation.coordinate.latitude);
+        println("Latitude : \(newLocation.coordinate.latitude), longitude : \(newLocation.coordinate.longitude)")
     }
     
     func takeWeather(météo: Weather) -> Void {
