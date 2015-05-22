@@ -1,14 +1,27 @@
 //
 //  Weather.swift
-//  HMWK 8
+//  Vent
 //
-//  Created by Marcia Elyseu on 4/22/15.
-//  Copyright (c) 2015 Marcia Elyseu. All rights reserved.
+//  Created by Alexandre Jouandin on 22/04/15.
+//  Copyright (c) 2015 Alexandre Jouandin. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 import SwiftyJSON
+
+enum Units: Int {
+    case metric = 1
+    case imperial
+    func stringify() -> String {
+        switch self {
+            case .metric:
+                return "metric"
+            case .imperial:
+                return "imperial"
+        }
+    }
+}
 
 class Weather {
     var latitude: Float
@@ -22,24 +35,27 @@ class Weather {
     }
     
 
-    class func retrieveWeather(latitude: Float, longitude: Float, completionHandler : ((Weather) -> Void)) {
-    Alamofire.request(.GET, "api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)")
-        .response { (request, response, data, error) -> Void in
-            let json = JSON(data: data as! NSData)
-            
-            println(json["wind"])
-            
-            var weatherItems = Wind(vitesse: 50, direction: 30)
-            
-            println(json)
-            /*
-            for (index: String, item: JSON) in json["list"] {
-                var weatherItem = WeatherItem(date: item["dt_txt"].stringValue, temp: item["main"]["temp"].doubleValue, desc: item["weather"][0]["description"].stringValue, iconId: item["weather"][0]["icon"].stringValue)
-                weatherItems.append(weatherItem)
-            }*/
-            
-            let weather = Weather(latitude: latitude, longitude: longitude, windObject: weatherItems)
-            completionHandler(weather)
+    class func retrieveWeather(latitude: Float, longitude: Float, units: Units = .metric, completionHandler : ((Weather) -> Void)) {
+        println("Requesting: http://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)")
+    Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&units=\(units.stringify())&language=fr")
+        .responseJSON { (request, response, jsonData, error) -> Void in
+            if (error != nil) {
+                println("Error with JSON: \(error)")
+                println(request)
+                println(response)
+            } else {
+                let json = JSON(jsonData!)
+                // Parse JSON
+                let speed: Double = json["wind"]["speed"].doubleValue
+                let direction = json["wind"]["deg"].doubleValue
+                var weatherItems = Wind(vitesse: speed, directionEnDegrés: direction)
+                println("Données sur le vent :")
+                println("Direction: \(weatherItems.directionDegrés)° = \(weatherItems.directionRadians) rad")
+                println("Vitesse: \(weatherItems.speed) m/s\n----------------- \n")
+                println(json)
+                let weather = Weather(latitude: latitude, longitude: longitude, windObject: weatherItems)
+                completionHandler(weather)
+            }
         }
     }
 }

@@ -1,19 +1,22 @@
 //
 //  weatherItems.swift
-//  HMWK 8
+//  Vent
 //
-//  Created by Marcia Elyseu on 4/23/15.
-//  Copyright (c) 2015 Marcia Elyseu. All rights reserved.
+//  Created by Alexandre Jouandin on 22/04/15.
+//  Copyright (c) 2015 Alexandre Jouandin. All rights reserved.
 //
 
 import Foundation
 
 class Wind {
-    let speed: Double?
-    let direction: Double?
+    let speed: Double
+    let directionDegrés: Double
+    var directionRadians: Double {
+        return directionDegrés * M_PI / 180
+    }
     
-    init(vitesse: Double, direction: Double) {
+    init(vitesse: Double, directionEnDegrés direction: Double) {
         self.speed = vitesse
-        self.direction = direction
+        self.directionDegrés = direction
     }
 }
