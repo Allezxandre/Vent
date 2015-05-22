@@ -35,7 +35,7 @@ class Weather {
     }
     
 
-    class func retrieveWeather(latitude: Float, longitude: Float, units: Units = .metric, completionHandler : ((Weather) -> Void)) {
+    class func retrieveWeather(#latitude: Float, longitude: Float, units: Units = .metric, completionHandler : ((Weather) -> Void)) {
         println("Requesting: http://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)")
     Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&units=\(units.stringify())&language=fr")
         .responseJSON { (request, response, jsonData, error) -> Void in

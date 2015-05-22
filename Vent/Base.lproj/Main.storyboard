@@ -36,6 +36,7 @@
                     </view>
                     <connections>
                         <outlet property="compassView" destination="uj8-O0-fOr" id="Rr3-l2-tAu"/>
+                        <outlet property="drapeauUIView" destination="V1g-4C-3UB" id="rvR-hv-mwW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

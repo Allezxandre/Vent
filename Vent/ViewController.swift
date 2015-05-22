@@ -13,6 +13,8 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var compassView: UIImageView!
+    @IBOutlet weak var drapeauUIView: DrapeauView!
+    
     var locationManager: CLLocationManager!
     var données: Weather!
     
@@ -23,12 +25,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        // Start weather fetch
-        Weather.retrieveWeather(48, longitude: 4) { (resultat) -> Void in
-            self.takeWeather(resultat)
-        }
         
         // Start compass
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -47,14 +43,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Convert Degree to Radian and move the needle
         let newRad: CGFloat =  CGFloat(-newHeading.trueHeading * M_PI / 180.0)
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-        println("Salut")
-        self.compassView.transform = CGAffineTransformMakeRotation(newRad)
+        println("Nouvel angle : \(newRad + CGFloat(self.données.windItem.directionRadians))")
+        self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad + CGFloat(self.données.windItem.directionRadians))
     })
     }
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        données?.longitude = Float(newLocation.coordinate.longitude);
-        données?.latitude = Float(newLocation.coordinate.latitude);
+        données?.longitude = Float(newLocation.coordinate.longitude)
+        données?.latitude = Float(newLocation.coordinate.latitude)
         println("Latitude : \(newLocation.coordinate.latitude), longitude : \(newLocation.coordinate.longitude)")
+        if ((données?.longitude != Float(newLocation.coordinate.longitude)) && (données?.latitude != Float(newLocation.coordinate.latitude)) ) {
+            // Start weather fetch
+            Weather.retrieveWeather(latitude: Float(newLocation.coordinate.latitude), longitude: Float(newLocation.coordinate.longitude)) { (resultat) -> Void in
+                self.takeWeather(resultat)
+            // Stop getting location
+            self.locationManager.stopUpdatingLocation()
+            }
+        }
     }
     
     func takeWeather(météo: Weather) -> Void {
