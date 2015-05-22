@@ -32,24 +32,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading:CLHeading) -> () {
     // Convert Degree to Radian and move the needle
-    // var oldRad =  -manager.heading.trueHeading * M_PI / 180.0
         let newRad: CGFloat =  CGFloat(-newHeading.trueHeading * M_PI / 180.0)
-/*    var theAnimation: CABasicAnimation
-    theAnimation=CABasicAnimation(keyPath: "transform.rotation")
-    theAnimation.fromValue = oldRad
-    theAnimation.toValue=newRad
-    theAnimation.duration = 0.5
-    compassImage.layer.addAnimation
-        //forKey:@"animateMyRotation"];
-    */
-    UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
         println("Salut")
         self.compassView.transform = CGAffineTransformMakeRotation(newRad)
     })
-        /*
-    compassImage.transform = CGAffineTransformMakeRotation(newRad);
-    NSLog(@"%f (%f) => %f (%f)", manager.heading.trueHeading, oldRad, newHeading.trueHeading, newRad);
-*/
     }
 
 
