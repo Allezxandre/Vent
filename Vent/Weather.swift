@@ -21,7 +21,7 @@ class Weather {
         self.windItem = windObject
     }
     
-
+a
     class func retrieveWeather(latitude: Float, longitude: Float, completionHandler : ((Weather) -> Void)) {
     Alamofire.request(.GET, "api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)")
         .response { (request, response, data, error) -> Void in

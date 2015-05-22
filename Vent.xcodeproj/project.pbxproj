@@ -15,6 +15,7 @@
 		300E340F1B0F4D8600575FA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 300E340E1B0F4D8600575FA0 /* Images.xcassets */; };
 		300E34121B0F4D8600575FA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 300E34101B0F4D8600575FA0 /* LaunchScreen.xib */; };
 		300E341E1B0F4D8700575FA0 /* VentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E341D1B0F4D8700575FA0 /* VentTests.swift */; };
+		30E664DF1B0F85F90082447E /* Boussole in Resources */ = {isa = PBXBuildFile; fileRef = 30E664DE1B0F85F90082447E /* Boussole */; };
 		B5F2CF89FC07ECE0B583BA31 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414BEC65B8332C995E09D07 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		300E34171B0F4D8700575FA0 /* VentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		300E341C1B0F4D8700575FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		300E341D1B0F4D8700575FA0 /* VentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentTests.swift; sourceTree = "<group>"; };
+		30E664DE1B0F85F90082447E /* Boussole */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Boussole; path = Vent/Boussole; sourceTree = "<group>"; };
 		6414BEC65B8332C995E09D07 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23A45FA95056CE5E99EEDA2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +70,7 @@
 		300E33F91B0F4D8600575FA0 = {
 			isa = PBXGroup;
 			children = (
+				30E664DE1B0F85F90082447E /* Boussole */,
 				300E34041B0F4D8600575FA0 /* Vent */,
 				300E341A1B0F4D8700575FA0 /* VentTests */,
 				300E34031B0F4D8600575FA0 /* Products */,
@@ -225,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E664DF1B0F85F90082447E /* Boussole in Resources */,
 				300E340D1B0F4D8600575FA0 /* Main.storyboard in Resources */,
 				300E34121B0F4D8600575FA0 /* LaunchScreen.xib in Resources */,
 				300E340F1B0F4D8600575FA0 /* Images.xcassets in Resources */,
