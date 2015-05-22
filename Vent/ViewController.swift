@@ -30,7 +30,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.takeWeather(resultat)
         }
         
-        
         // Start compass
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.headingFilter = 1

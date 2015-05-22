@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,16 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="compass_needle" translatesAutoresizingMaskIntoConstraints="NO" id="uj8-O0-fOr">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1g-4C-3UB" customClass="DrapeauView" customModule="Vent" customModuleProvider="target">
+                                <rect key="frame" x="100" y="100" width="400" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="F8z-py-lZg"/>
+                                    <constraint firstAttribute="width" constant="400" id="hka-fj-boe"/>
+                                </constraints>
+                            </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="compass_needle" translatesAutoresizingMaskIntoConstraints="NO" id="uj8-O0-fOr">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="289"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uj8-O0-fOr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HVN-F0-feQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uj8-O0-fOr" secondAttribute="trailing" id="bnC-qJ-GvT"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uj8-O0-fOr" secondAttribute="bottom" id="e5v-Jl-laY"/>
-                            <constraint firstItem="uj8-O0-fOr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="tgd-HQ-cpr"/>
+                            <constraint firstAttribute="centerY" secondItem="V1g-4C-3UB" secondAttribute="centerY" id="fKk-zV-QOb"/>
+                            <constraint firstAttribute="centerX" secondItem="V1g-4C-3UB" secondAttribute="centerX" id="gTj-AJ-j4S"/>
                         </constraints>
                     </view>
                     <connections>
@@ -34,6 +39,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="7hG-ez-xhO" customClass="Drapeau" customModule="Vent" customModuleProvider="target"/>
             </objects>
         </scene>
     </scenes>
