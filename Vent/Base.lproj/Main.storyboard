@@ -24,18 +24,14 @@
                                     <constraint firstAttribute="width" constant="400" id="hka-fj-boe"/>
                                 </constraints>
                             </view>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="compass_needle" translatesAutoresizingMaskIntoConstraints="NO" id="uj8-O0-fOr">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="289"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="V1g-4C-3UB" secondAttribute="centerY" id="fKk-zV-QOb"/>
+                            <constraint firstItem="V1g-4C-3UB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="00v-up-5uc"/>
                             <constraint firstAttribute="centerX" secondItem="V1g-4C-3UB" secondAttribute="centerX" id="gTj-AJ-j4S"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="compassView" destination="uj8-O0-fOr" id="Rr3-l2-tAu"/>
                         <outlet property="drapeauUIView" destination="V1g-4C-3UB" id="rvR-hv-mwW"/>
                     </connections>
                 </viewController>
@@ -44,7 +40,4 @@
             </objects>
         </scene>
     </scenes>
-    <resources>
-        <image name="compass_needle" width="300" height="289"/>
-    </resources>
 </document>
