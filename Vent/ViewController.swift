@@ -46,6 +46,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if let fonctionne = self.données {
                 println("Nouvel angle : \(newRad + CGFloat(self.données.windItem.directionRadians))")
                 self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad + CGFloat(self.données.windItem.directionRadians))
+            } else {
+                println("Nouvel angle : \(newRad)")
+                self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad)
+
             }
     })
     }
