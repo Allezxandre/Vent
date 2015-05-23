@@ -43,8 +43,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Convert Degree to Radian and move the needle
         let newRad: CGFloat =  CGFloat(-newHeading.trueHeading * M_PI / 180.0)
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-        println("Nouvel angle : \(newRad + CGFloat(self.données.windItem.directionRadians))")
-        self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad + CGFloat(self.données.windItem.directionRadians))
+            if let fonctionne = self.données {
+                println("Nouvel angle : \(newRad + CGFloat(self.données.windItem.directionRadians))")
+                self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad + CGFloat(self.données.windItem.directionRadians))
+            }
     })
     }
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
