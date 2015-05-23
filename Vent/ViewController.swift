@@ -12,7 +12,6 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    @IBOutlet weak var compassView: UIImageView!
     @IBOutlet weak var drapeauUIView: DrapeauView!
     
     var locationManager: CLLocationManager!
@@ -21,6 +20,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         // Get position
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
@@ -58,7 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         données?.longitude = Float(newLocation.coordinate.longitude)
         données?.latitude = Float(newLocation.coordinate.latitude)
         println("Latitude : \(newLocation.coordinate.latitude), longitude : \(newLocation.coordinate.longitude)")
-        if ((données?.longitude != Float(newLocation.coordinate.longitude)) && (données?.latitude != Float(newLocation.coordinate.latitude)) ) {
+        if ((données?.longitude != Float(newLocation.coordinate.longitude)) || (données?.latitude != Float(newLocation.coordinate.latitude)) ) {
             // Start weather fetch
             Weather.retrieveWeather(latitude: Float(newLocation.coordinate.latitude), longitude: Float(newLocation.coordinate.longitude)) { (resultat) -> Void in
                 self.takeWeather(resultat)
@@ -70,7 +73,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func takeWeather(météo: Weather) -> Void {
         données = Weather(latitude: météo.latitude, longitude: météo.longitude, windObject: météo.windItem)
-        // Coucou
+        if !CLLocationManager.headingAvailable() {
+            println("Attention ! Cet iPhone (?) n'a pas les informations sur l'orientation.\nEst-ce qu'il a une boussole au moins ?")
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                println("Nouvel angle : \(self.données.windItem.directionRadians) rad = \(self.données.windItem.directionDegrés)°")
+                self.drapeauUIView.transform = CGAffineTransformMakeRotation(CGFloat(self.données.windItem.directionRadians))
+            })
+        }
         
     }
 
