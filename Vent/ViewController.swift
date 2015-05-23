@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
     var données: Weather!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 println("Nouvel angle : \(newRad + CGFloat(self.données.windItem.directionRadians))")
                 self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad + CGFloat(self.données.windItem.directionRadians))
             } else {
-                println("Nouvel angle : \(newRad)")
+                println("Nouvel angle oh non : \(newRad)")
                 self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad)
 
             }
@@ -68,9 +69,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func takeWeather(météo: Weather) -> Void {
-        données?.latitude = météo.latitude
-        données?.longitude = météo.longitude
-        données?.windItem = météo.windItem
+        données = Weather(latitude: météo.latitude, longitude: météo.longitude, windObject: météo.windItem)
+        // Coucou
+        
     }
 
 
