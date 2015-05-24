@@ -48,8 +48,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let newRad: CGFloat =  CGFloat(-newHeading.trueHeading * M_PI / 180.0)
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             if let fonctionne = self.données {
-                println("Nouvel angle : \(newRad + CGFloat(self.données.windItem.directionRadians))")
-                self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad + CGFloat(self.données.windItem.directionRadians))
+                println("Nouvel angle : \(newRad + CGFloat(self.données.windItem.directionRadians + M_PI))")
+                self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad + CGFloat(self.données.windItem.directionRadians + M_PI))
             } else {
                 println("Nouvel angle oh non : \(newRad)")
                 self.drapeauUIView.transform = CGAffineTransformMakeRotation(newRad)
@@ -77,7 +77,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             println("Attention ! Cet iPhone (?) n'a pas les informations sur l'orientation.\nEst-ce qu'il a une boussole au moins ?")
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 println("Nouvel angle : \(self.données.windItem.directionRadians) rad = \(self.données.windItem.directionDegrés)°")
-                self.drapeauUIView.transform = CGAffineTransformMakeRotation(CGFloat(self.données.windItem.directionRadians))
+                self.drapeauUIView.transform = CGAffineTransformMakeRotation(CGFloat(self.données.windItem.directionRadians + M_PI))
             })
         }
         
