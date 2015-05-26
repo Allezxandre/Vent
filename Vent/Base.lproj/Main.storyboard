@@ -17,22 +17,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1g-4C-3UB" customClass="DrapeauView" customModule="Vent" customModuleProvider="target">
-                                <rect key="frame" x="100" y="100" width="400" height="400"/>
+                                <rect key="frame" x="100" y="20" width="400" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="F8z-py-lZg"/>
-                                    <constraint firstAttribute="width" constant="400" id="hka-fj-boe"/>
+                                    <constraint firstAttribute="width" constant="400" id="R82-UO-7LL"/>
+                                    <constraint firstAttribute="height" constant="400" id="tIm-r6-YS7"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RLt-QC-uvb">
+                                <rect key="frame" x="225" y="494" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="KX1-nt-7qw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="V1g-4C-3UB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="00v-up-5uc"/>
-                            <constraint firstAttribute="centerX" secondItem="V1g-4C-3UB" secondAttribute="centerX" id="gTj-AJ-j4S"/>
+                            <constraint firstItem="RLt-QC-uvb" firstAttribute="centerX" secondItem="V1g-4C-3UB" secondAttribute="centerX" id="pcD-kP-u6w"/>
+                            <constraint firstAttribute="centerX" secondItem="V1g-4C-3UB" secondAttribute="centerX" id="rQH-D8-UbY"/>
+                            <constraint firstItem="V1g-4C-3UB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tSz-zB-XfH"/>
+                            <constraint firstItem="RLt-QC-uvb" firstAttribute="top" secondItem="V1g-4C-3UB" secondAttribute="bottom" constant="74" id="uhT-k7-J8R"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="drapeauUIView" destination="V1g-4C-3UB" id="rvR-hv-mwW"/>
+                        <outlet property="textField" destination="RLt-QC-uvb" id="UIX-8R-sSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
