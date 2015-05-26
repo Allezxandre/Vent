@@ -25,17 +25,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        // Get position
         locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        // Start compass
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.headingFilter = 1
+        locationManager.distanceFilter = 100 //mètres
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-        
-        // Start compass
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.headingFilter = 1
-        locationManager.delegate = self
         locationManager.startUpdatingHeading()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK Animation Boussole
+    // MARK: Location delegate
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading:CLHeading) -> () {
         // Convert Degree to Radian and move the needle
         let newRad: CGFloat =  CGFloat(-newHeading.trueHeading * M_PI / 180.0)
@@ -57,16 +62,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
     })
     }
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        données?.longitude = Float(newLocation.coordinate.longitude)
-        données?.latitude = Float(newLocation.coordinate.latitude)
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        NSLog("There was an error retrieving location:\n\(error)")
+    }
+    
+    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
+        return true
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        // on prend la dernière localisation
+        let newLocation = locations.last as! CLLocation
         println("Latitude : \(newLocation.coordinate.latitude), longitude : \(newLocation.coordinate.longitude)")
-            // Start weather fetch
-            Weather.retrieveWeather(latitude: Float(newLocation.coordinate.latitude), longitude: Float(newLocation.coordinate.longitude)) { (resultat) -> Void in
-                self.takeWeather(resultat)
-            // Stop getting location
-            self.locationManager.stopUpdatingLocation()
-            }
+        // Start weather fetch
+        Weather.retrieveWeather(latitude: Float(newLocation.coordinate.latitude), longitude: Float(newLocation.coordinate.longitude)) { (resultat) -> Void in
+            self.takeWeather(resultat)
+        }
     }
     
     func takeWeather(météo: Weather) -> Void {
@@ -78,7 +90,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.drapeauUIView.transform = CGAffineTransformMakeRotation(CGFloat(self.données.windItem.directionRadians + M_PI))
             })
         }
-        textField.text = "\(données.windItem.speed) m/s"
+        
+        // Afficher le texte
+        let fmt = NSNumberFormatter()
+        fmt.maximumFractionDigits = 4
+        fmt.minimumFractionDigits = 2
+        let textFormatté = fmt.stringFromNumber(données!.windItem.speed)!
+        textField.text = "\(textFormatté) m/s"
+        textField.sizeToFit()
         
     }
 
