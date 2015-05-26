@@ -65,6 +65,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         NSLog("There was an error retrieving location:\n\(error)")
+        if !CLLocationManager.headingAvailable() {
+            println("\nTu utilises le simulateur, et tu as surement oublié d'activer la localisation...\n(Bolosse)\n\n")
+        }
     }
     
     func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
