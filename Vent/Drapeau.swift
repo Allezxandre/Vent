@@ -36,7 +36,7 @@ public class Drapeau : NSObject {
 
         //// Ensemble
         CGContextSaveGState(context)
-        CGContextTranslateCTM(context, 200, 200)
+        CGContextTranslateCTM(context, 160, 160)
         CGContextRotateCTM(context, -angle * CGFloat(M_PI) / 180)
 
 
@@ -44,8 +44,8 @@ public class Drapeau : NSObject {
         //// Support
         //// cable Drawing
         var cablePath = UIBezierPath()
-        cablePath.moveToPoint(CGPointMake(-26.75, -31.25))
-        cablePath.addLineToPoint(CGPointMake(-7.01, 3.55))
+        cablePath.moveToPoint(CGPointMake(-22.75, -26.75))
+        cablePath.addLineToPoint(CGPointMake(-5.72, 3.62))
         cablePath.lineCapStyle = kCGLineCapRound;
 
         Drapeau.blanc20.setFill()
@@ -57,8 +57,8 @@ public class Drapeau : NSObject {
 
         //// cable 2 Drawing
         var cable2Path = UIBezierPath()
-        cable2Path.moveToPoint(CGPointMake(6.98, 3.55))
-        cable2Path.addLineToPoint(CGPointMake(24.25, -30.44))
+        cable2Path.moveToPoint(CGPointMake(6.35, 3.62))
+        cable2Path.addLineToPoint(CGPointMake(21.25, -26.04))
         cable2Path.lineCapStyle = kCGLineCapRound;
 
         Drapeau.blanc20.setFill()
@@ -69,7 +69,7 @@ public class Drapeau : NSObject {
 
 
         //// Mat Drawing
-        var matPath = UIBezierPath(ovalInRect: CGRectMake(-8.5, -8, 17, 16))
+        var matPath = UIBezierPath(ovalInRect: CGRectMake(-7.5, -7.5, 15, 15))
         Drapeau.blanc20.setFill()
         matPath.fill()
 
@@ -82,65 +82,65 @@ public class Drapeau : NSObject {
 
         //// Clip Clipper
         var clipperPath = UIBezierPath()
-        clipperPath.moveToPoint(CGPointMake(-7.38, -177))
-        clipperPath.addLineToPoint(CGPointMake(7.38, -177))
-        clipperPath.addLineToPoint(CGPointMake(32, -30.5))
-        clipperPath.addLineToPoint(CGPointMake(-32, -30.5))
-        clipperPath.addLineToPoint(CGPointMake(-7.38, -177))
+        clipperPath.moveToPoint(CGPointMake(-5.85, -153.5))
+        clipperPath.addLineToPoint(CGPointMake(6.85, -153.5))
+        clipperPath.addLineToPoint(CGPointMake(28, -26))
+        clipperPath.addLineToPoint(CGPointMake(-27, -26))
+        clipperPath.addLineToPoint(CGPointMake(-5.85, -153.5))
         clipperPath.closePath()
         clipperPath.addClip()
 
 
         //// Rectangle Drawing
-        let rectanglePath = UIBezierPath(rect: CGRectMake(-32.5, -128, 65, 16))
+        let rectanglePath = UIBezierPath(rect: CGRectMake(-27.5, -111.5, 56, 15))
         Drapeau.orange.setFill()
         rectanglePath.fill()
 
 
         //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(-32.5, -112, 65, 17))
+        let rectangle2Path = UIBezierPath(rect: CGRectMake(-27.5, -96.5, 56, 14))
         Drapeau.blanc20.setFill()
         rectangle2Path.fill()
 
 
         //// Rectangle 3 Drawing
-        let rectangle3Path = UIBezierPath(rect: CGRectMake(-32.5, -95, 65, 16))
+        let rectangle3Path = UIBezierPath(rect: CGRectMake(-27.5, -82.5, 56, 15))
         Drapeau.orange.setFill()
         rectangle3Path.fill()
 
 
         //// Rectangle 4 Drawing
-        let rectangle4Path = UIBezierPath(rect: CGRectMake(-32.5, -79, 65, 17))
+        let rectangle4Path = UIBezierPath(rect: CGRectMake(-27.5, -67.5, 56, 14))
         Drapeau.blanc20.setFill()
         rectangle4Path.fill()
 
 
         //// Rectangle 5 Drawing
-        let rectangle5Path = UIBezierPath(rect: CGRectMake(-32.5, -62, 65, 16))
+        let rectangle5Path = UIBezierPath(rect: CGRectMake(-27.5, -53.5, 56, 14))
         Drapeau.orange.setFill()
         rectangle5Path.fill()
 
 
         //// Rectangle 6 Drawing
-        let rectangle6Path = UIBezierPath(rect: CGRectMake(-32.5, -46, 65, 16))
+        let rectangle6Path = UIBezierPath(rect: CGRectMake(-27.5, -39.5, 56, 14))
         Drapeau.blanc20.setFill()
         rectangle6Path.fill()
 
 
         //// Rectangle 7 Drawing
-        let rectangle7Path = UIBezierPath(rect: CGRectMake(-32.5, -161, 65, 17))
+        let rectangle7Path = UIBezierPath(rect: CGRectMake(-27.5, -140.5, 56, 16))
         Drapeau.orange.setFill()
         rectangle7Path.fill()
 
 
         //// Rectangle 8 Drawing
-        let rectangle8Path = UIBezierPath(rect: CGRectMake(-32.5, -144, 65, 16))
+        let rectangle8Path = UIBezierPath(rect: CGRectMake(-27.5, -124.5, 56, 13))
         Drapeau.blanc20.setFill()
         rectangle8Path.fill()
 
 
         //// Rectangle 9 Drawing
-        let rectangle9Path = UIBezierPath(rect: CGRectMake(-32.5, -177, 65, 16))
+        let rectangle9Path = UIBezierPath(rect: CGRectMake(-27.5, -153.5, 56, 13))
         Drapeau.blanc20.setFill()
         rectangle9Path.fill()
 
