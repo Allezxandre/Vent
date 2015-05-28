@@ -52,7 +52,7 @@ class Weather {
                 println("Données sur le vent :")
                 println("Direction: \(weatherItems.directionDegrés)° = \(weatherItems.directionRadians) rad")
                 println("Vitesse: \(weatherItems.speed) m/s\n----------------- \n")
-                println(json)
+                //println(json)
                 let weather = Weather(latitude: latitude, longitude: longitude, windObject: weatherItems)
                 completionHandler(weather)
             }
